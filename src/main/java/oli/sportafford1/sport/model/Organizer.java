@@ -4,24 +4,22 @@
 
 package oli.sportafford1.sport.model;
 
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "coach")
+@Table(name = "organizer")
 @EntityListeners(AuditingEntityListener.class)
-public class Coach implements Serializable {
+public class Organizer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "coach_id")
-    private Long coachId;
+    @Column(name = "organizer_id")
+    private Long organizerId;
 
     @NotBlank
     @Column(name = "last_name")
@@ -34,38 +32,25 @@ public class Coach implements Serializable {
     @Column(name = "middle_name")
     private String middleName;
 
-    @Column(name = "birth_date",nullable = false, updatable = false)
-    @Temporal(TemporalType.DATE)
-    @CreatedDate
-    private Date birthDate;
+    @OneToMany(mappedBy = "organizer", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<Competition> competitions;
 
-    @ManyToMany(mappedBy = "coaches")
-    private List<Sportsman> sportsmen;
-
-    public Coach() {
+    public Organizer() {
     }
 
-    public Coach(@NotBlank String lastName, @NotBlank String firstName, String middleName, Date birthDate) {
+    public Organizer(@NotBlank String lastName, @NotBlank String firstName, String middleName, List<Competition> competitions) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.middleName = middleName;
-        this.birthDate = birthDate;
+        this.competitions = competitions;
     }
 
-    public Coach(Long coachId,@NotBlank String lastName, @NotBlank String firstName, String middleName, Date birthDate) {
-        this.coachId = coachId;
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.birthDate = birthDate;
+    public Long getOrganizerId() {
+        return organizerId;
     }
 
-    public Long getCoachId() {
-        return coachId;
-    }
-
-    public void setCoachId(Long coachId) {
-        this.coachId = coachId;
+    public void setOrganizerId(Long organizerId) {
+        this.organizerId = organizerId;
     }
 
     public String getLastName() {
@@ -92,11 +77,11 @@ public class Coach implements Serializable {
         this.middleName = middleName;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
+    public List<Competition> getCompetitions() {
+        return competitions;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setCompetitions(List<Competition> competitions) {
+        this.competitions = competitions;
     }
 }

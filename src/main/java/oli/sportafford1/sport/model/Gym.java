@@ -4,51 +4,52 @@
 
 package oli.sportafford1.sport.model;
 
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "sport_club")
+@Table(name = "gym")
 @EntityListeners(AuditingEntityListener.class)
-public class SportClub implements Serializable {
+public class Gym implements Serializable {
 
     @Id
-    @Column(name = "sport_club_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long sportClubId;
+    @Column(name = "gym_id")
+    private Long gymId;
 
-    @NotBlank
     @Column(name = "name")
     private String name;
 
     @Column(name = "foundation_date", nullable = false, updatable = false)
     @Temporal(TemporalType.DATE)
-    @CreatedDate
     private Date foundationDate;
 
-    @OneToMany(mappedBy = "sportClub", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    private List<Sportsman> sportsmen;
+    @Column(name = "address")
+    private String address;
 
-    public SportClub() {
+    @ManyToMany(mappedBy = "gyms")
+    private List<Competition> competitions;
+
+    public Gym() {
     }
 
-    public SportClub(@NotBlank String name, Date foundationDate) {
+    public Gym(String name, Date foundationDate, String address, List<Competition> competitions) {
         this.name = name;
         this.foundationDate = foundationDate;
+        this.address = address;
+        this.competitions = competitions;
     }
 
-    public Long getSportClubId() {
-        return sportClubId;
+    public Long getGymId() {
+        return gymId;
     }
 
-    public void setSportClubId(Long sportClubId) {
-        this.sportClubId = sportClubId;
+    public void setGymId(Long gymId) {
+        this.gymId = gymId;
     }
 
     public String getName() {
@@ -65,5 +66,21 @@ public class SportClub implements Serializable {
 
     public void setFoundationDate(Date foundationDate) {
         this.foundationDate = foundationDate;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public List<Competition> getCompetitions() {
+        return competitions;
+    }
+
+    public void setCompetitions(List<Competition> competitions) {
+        this.competitions = competitions;
     }
 }

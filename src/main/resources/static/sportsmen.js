@@ -1,3 +1,7 @@
+/*
+ * Copyright by Stepan Oliinyk (c) 2018.
+ */
+
 var app = angular.module("sportsmen", []);
 
 app.controller("AppCtrl", function ($scope, $http) {

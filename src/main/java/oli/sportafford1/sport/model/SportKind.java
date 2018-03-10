@@ -1,3 +1,7 @@
+/*
+ * Copyright by Stepan Oliinyk (c) 2018.
+ */
+
 package oli.sportafford1.sport.model;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -23,6 +27,9 @@ public class SportKind implements Serializable {
 
     @ManyToMany(mappedBy = "sportKinds")
     private List<Sportsman> sportsmen;
+
+    @OneToMany(mappedBy = "sportKind", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<Competition> competitions;
 
     public SportKind() {
     }

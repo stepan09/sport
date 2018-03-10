@@ -1,3 +1,7 @@
+/*
+ * Copyright by Stepan Oliinyk (c) 2018.
+ */
+
 package oli.sportafford1.sport.model;
 
 import org.springframework.data.annotation.CreatedDate;
@@ -47,6 +51,9 @@ public class Sportsman implements Serializable {
     @ManyToOne
     @JoinColumn(name = "sport_club_sport_club_id", nullable = false)
     private SportClub sportClub;
+
+    @ManyToMany(mappedBy = "sportsmen")
+    private List<Competition> competitions;
 
     public Sportsman() {
     }

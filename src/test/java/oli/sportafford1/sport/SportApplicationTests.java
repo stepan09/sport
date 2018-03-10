@@ -1,3 +1,7 @@
+/*
+ * Copyright by Stepan Oliinyk (c) 2018.
+ */
+
 package oli.sportafford1.sport;
 
 import org.junit.Test;
