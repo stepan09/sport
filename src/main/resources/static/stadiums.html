@@ -6,11 +6,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Тренери</title>
+    <title>Стадіони</title>
     <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body ng-app="coaches">
+<body ng-app="stadiums">
 <ul id="navbar">
     <li><a href="#">Табли</a>
         <ul>
@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-md12">
             <div class="panel-heading">
-                <p style="text-align: center">Тренери</p>
+                <p style="text-align: center">Стадіони</p>
             </div>
 
             <div class="panel-body">
@@ -33,22 +33,24 @@
                         <tr>
                             <th>    </th>
                             <th>id</th>
-                            <th>Прізвище</th>
-                            <th>Ім'я</th>
-                            <th>По батькові</th>
-                            <th>Дата народження</th>
+                            <th>Назва</th>
+                            <th>Дата заснування</th>
+                            <th>Адреса</th>
+                            <th>Вмістимість</th>
+                            <th>Бігові доріжки</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <tr ng-repeat="item in coaches">
+                        <tr ng-repeat="item in stadiums">
                             <td><input type="radio" name="group"></td>
-                            <td>{{item.coachId}}</td>
-                            <td>{{item.lastName}}</td>
-                            <td>{{item.firstName}}</td>
-                            <td>{{item.middleName}}</td>
-                            <td>{{item.birthDate}}</td>
-                            <td><button ng-click="ctrl.delCoach(item.coachId)">DEL</button></td>
+                            <td>{{item.stadiumId}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.foundationDate}}</td>
+                            <td>{{item.address}}</td>
+                            <td>{{item.capacity}}</td>
+                            <td>{{item.treadmill}}</td>
+                            <td><button ng-click="ctrl.delStadium(item.stadiumId)">DEL</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -61,7 +63,7 @@
 </div>
 
 <script type="text/javascript" src="angular.min.js"></script>
-<script type="text/javascript" src="coaches.js"></script>
+<script type="text/javascript" src="stadiums.js"></script>
 
 </body>
 </html>
