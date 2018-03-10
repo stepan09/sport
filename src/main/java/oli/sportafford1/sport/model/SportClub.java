@@ -38,9 +38,10 @@ public class SportClub implements Serializable {
     public SportClub() {
     }
 
-    public SportClub(@NotBlank String name, Date foundationDate) {
+    public SportClub(@NotBlank String name, Date foundationDate, List<Sportsman> sportsmen) {
         this.name = name;
         this.foundationDate = foundationDate;
+        this.sportsmen = sportsmen;
     }
 
     public Long getSportClubId() {
@@ -65,5 +66,13 @@ public class SportClub implements Serializable {
 
     public void setFoundationDate(Date foundationDate) {
         this.foundationDate = foundationDate;
+    }
+
+    public List<Sportsman> getSportsmen() {
+        return sportsmen;
+    }
+
+    public void setSportsmen(List<Sportsman> sportsmen) {
+        this.sportsmen = sportsmen;
     }
 }

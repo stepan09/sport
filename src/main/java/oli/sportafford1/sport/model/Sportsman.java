@@ -58,19 +58,15 @@ public class Sportsman implements Serializable {
     public Sportsman() {
     }
 
-    public Sportsman(Long sportsmanId, @NotBlank String lastName, @NotBlank String firstName, String middleName, Date birthDate) {
-        this.sportsmanId = sportsmanId;
+    public Sportsman(@NotBlank String lastName, @NotBlank String firstName, String middleName, Date birthDate, List<Coach> coaches, List<SportKind> sportKinds, SportClub sportClub, List<Competition> competitions) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.middleName = middleName;
         this.birthDate = birthDate;
-    }
-
-    public Sportsman(@NotBlank String lastName, @NotBlank String firstName, String middleName, Date birthDate) {
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.birthDate = birthDate;
+        this.coaches = coaches;
+        this.sportKinds = sportKinds;
+        this.sportClub = sportClub;
+        this.competitions = competitions;
     }
 
     public Long getSportsmanId() {

@@ -45,19 +45,12 @@ public class Coach implements Serializable {
     public Coach() {
     }
 
-    public Coach(@NotBlank String lastName, @NotBlank String firstName, String middleName, Date birthDate) {
+    public Coach(@NotBlank String lastName, @NotBlank String firstName, String middleName, Date birthDate, List<Sportsman> sportsmen) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.middleName = middleName;
         this.birthDate = birthDate;
-    }
-
-    public Coach(Long coachId,@NotBlank String lastName, @NotBlank String firstName, String middleName, Date birthDate) {
-        this.coachId = coachId;
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.birthDate = birthDate;
+        this.sportsmen = sportsmen;
     }
 
     public Long getCoachId() {
@@ -98,5 +91,13 @@ public class Coach implements Serializable {
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public List<Sportsman> getSportsmen() {
+        return sportsmen;
+    }
+
+    public void setSportsmen(List<Sportsman> sportsmen) {
+        this.sportsmen = sportsmen;
     }
 }

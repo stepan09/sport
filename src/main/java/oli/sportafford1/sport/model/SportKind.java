@@ -34,8 +34,10 @@ public class SportKind implements Serializable {
     public SportKind() {
     }
 
-    public SportKind(@NotBlank String name) {
+    public SportKind(@NotBlank String name, List<Sportsman> sportsmen, List<Competition> competitions) {
         this.name = name;
+        this.sportsmen = sportsmen;
+        this.competitions = competitions;
     }
 
     public Long getId() {

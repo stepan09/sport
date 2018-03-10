@@ -66,12 +66,16 @@ public class Competition implements Serializable {
     public Competition() {
     }
 
-    public Competition(@NotBlank String name, Date startDate, Date finishDate, SportKind sportKind, List<Sportsman> sportsmen) {
+    public Competition(@NotBlank String name, Date startDate, Date finishDate, SportKind sportKind, List<Sportsman> sportsmen, Organizer organizer, List<Stadium> stadiums, List<Court> courts, List<Gym> gyms) {
         this.name = name;
         this.startDate = startDate;
         this.finishDate = finishDate;
         this.sportKind = sportKind;
         this.sportsmen = sportsmen;
+        this.organizer = organizer;
+        this.stadiums = stadiums;
+        this.courts = courts;
+        this.gyms = gyms;
     }
 
     public Long getCompetitionId() {
@@ -120,5 +124,37 @@ public class Competition implements Serializable {
 
     public void setSportsmen(List<Sportsman> sportsmen) {
         this.sportsmen = sportsmen;
+    }
+
+    public Organizer getOrganizer() {
+        return organizer;
+    }
+
+    public void setOrganizer(Organizer organizer) {
+        this.organizer = organizer;
+    }
+
+    public List<Stadium> getStadiums() {
+        return stadiums;
+    }
+
+    public void setStadiums(List<Stadium> stadiums) {
+        this.stadiums = stadiums;
+    }
+
+    public List<Court> getCourts() {
+        return courts;
+    }
+
+    public void setCourts(List<Court> courts) {
+        this.courts = courts;
+    }
+
+    public List<Gym> getGyms() {
+        return gyms;
+    }
+
+    public void setGyms(List<Gym> gyms) {
+        this.gyms = gyms;
     }
 }

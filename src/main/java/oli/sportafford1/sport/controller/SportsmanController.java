@@ -25,16 +25,9 @@ public class SportsmanController {
     @Autowired
     private SportsmanRepository sportsmanRepository;
 
-    List<Sportsman> sportsmen = Arrays.asList(
-            new Sportsman(1L,"Oliinyk", "Stepan", "Dmytrovych", Date.from(Instant.now())),
-            new Sportsman(2L,"Shpylka", "Anton", "Vasyliovych", Date.from(Instant.now())),
-            new Sportsman(3L,"Tsurkan", "Vitalii", "Evhenovych", Date.from(Instant.now()))
-            );
-
     @GetMapping("/sportsmen")
     public List<Sportsman> getAllSportsmen(){
         return sportsmanRepository.findAll();
-        //return sportsmen;
     }
 
     @PostMapping("/sportsmen")
