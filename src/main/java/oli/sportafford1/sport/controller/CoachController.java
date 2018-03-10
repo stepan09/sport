@@ -53,13 +53,13 @@ public class CoachController {
         return updateCoach;
     }
 
-    @DeleteMapping("/coaches/{id}")
-    public ResponseEntity<?> deleteCoach(@PathVariable(value = "id") Long coachId) {
+    @DeleteMapping("/coaches/del")
+    public Coach deleteCoach(@RequestParam("id") Long coachId) {
         Coach coach = coachRepository.findById(coachId)
                 .orElseThrow(() -> new ResourceNotFoundException("Coach", "id", coachId));
 
         coachRepository.delete(coach);
 
-        return ResponseEntity.ok().build();
+        return coach;
     }
 }

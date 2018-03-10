@@ -30,25 +30,26 @@
             <div class="panel-body">
                 <table class="table table-striped">
                     <thead>
-                    <tr>
-                        <th>    </th>
-                        <th>id</th>
-                        <th>Прізвище</th>
-                        <th>Ім'я</th>
-                        <th>По батькові</th>
-                        <th>Дата народження</th>
-                    </tr>
+                        <tr>
+                            <th>    </th>
+                            <th>id</th>
+                            <th>Прізвище</th>
+                            <th>Ім'я</th>
+                            <th>По батькові</th>
+                            <th>Дата народження</th>
+                        </tr>
                     </thead>
+
                     <tbody>
-                    <tr ng-repeat="item in coaches">
-                        <td><input type="radio" name="group"></td>
-                        <td>{{item.coachId}}</td>
-                        <td>{{item.lastName}}</td>
-                        <td>{{item.firstName}}</td>
-                        <td>{{item.middleName}}</td>
-                        <td>{{item.birthDate}}</td>
-                        <td><button ng-click="ctrl.delCoach(item.coachId)">DEL</button></td>
-                    </tr>
+                        <tr ng-repeat="item in coaches">
+                            <td><input type="radio" name="group"></td>
+                            <td>{{item.coachId}}</td>
+                            <td>{{item.lastName}}</td>
+                            <td>{{item.firstName}}</td>
+                            <td>{{item.middleName}}</td>
+                            <td>{{item.birthDate}}</td>
+                            <td><button ng-click="ctrl.delCoach(item.coachId)">DEL</button></td>
+                        </tr>
                     </tbody>
                 </table>
 

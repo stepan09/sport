@@ -13,7 +13,7 @@ app.controller("AppCtrl", function ($scope, $http) {
     });
 
     this.delCoach = function del(id) {
-        $http.get('api/coaches?id='+id).then(function (response) {
+        $http.get('api/coaches/del?id='+id).then(function (response) {
             window.alert('coach ' + ' ' +response.data.lastName + ' ' +response.data.coachId + ' ' +response.data.firstName + ' ' + ' has been succesfully deleted!');
             window.location.reload();
         });
