@@ -42,13 +42,13 @@
 
                     <tbody>
                         <tr ng-repeat="item in coaches">
-                            <td><input type="radio" name="group"></td>
                             <td>{{item.coachId}}</td>
                             <td>{{item.lastName}}</td>
                             <td>{{item.firstName}}</td>
                             <td>{{item.middleName}}</td>
                             <td>{{item.birthDate}}</td>
                             <td><button ng-click="ctrl.delCoach(item.coachId)">DEL</button></td>
+                            <td><button ng-click="ctrl.readCoach(item.coachId)">READ</button></td>
                         </tr>
                     </tbody>
                 </table>

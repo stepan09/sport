@@ -13,9 +13,16 @@ app.controller("AppCtrl", function ($scope, $http) {
     });
 
     this.delCoach = function del(id) {
-        $http.get('api/coaches/del?id='+id).then(function (response) {
-            window.alert('coach ' + ' ' +response.data.lastName + ' ' +response.data.coachId + ' ' +response.data.firstName + ' ' + ' has been succesfully deleted!');
+        $http.delete('api/coaches/del/'+id).then(function (response) {
+            window.alert('coach ' + ' ' +response.data.lastName + ' ' +response.data.coachId + ' ' +response.data.firstName + ' ' + ' has been successfully deleted!');
             window.location.reload();
         });
     };
+
+    this.readCoach = function read(id) {
+        $http.get('api/coaches/'+id).then(function (response) {
+            window.alert('Coach ' + ' ' + response.data.lastName + ' ' + response.data.firstName
+            + ' ' + response.data.middleName);
+        })
+    }
 });

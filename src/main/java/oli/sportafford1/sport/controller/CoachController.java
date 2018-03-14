@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api")
 public class CoachController {
@@ -53,13 +54,13 @@ public class CoachController {
         return updateCoach;
     }
 
-    @DeleteMapping("/coaches/del")
-    public Coach deleteCoach(@RequestParam("id") Long coachId) {
+    @DeleteMapping("/coaches/del/{id}")
+    public ResponseEntity<?> deleteCoach(@PathVariable(value = "id") Long coachId) {
         Coach coach = coachRepository.findById(coachId)
                 .orElseThrow(() -> new ResourceNotFoundException("Coach", "id", coachId));
 
         coachRepository.delete(coach);
 
-        return coach;
+        return ResponseEntity.ok().build();
     }
 }
