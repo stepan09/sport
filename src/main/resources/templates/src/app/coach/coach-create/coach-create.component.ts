@@ -13,22 +13,20 @@ import {Router} from "@angular/router";
 })
 export class CoachCreateComponent implements OnInit {
 
+  postStatus: any;
+  private coach1: Coach;
   constructor(private router: Router,
               private coachService: CoachService) { }
 
   ngOnInit() {
   }
 
-  saveCoach(coach: Coach){
-    console.log(coach.lastName);
-    console.log(coach.firstName);
-    console.log(coach.middleName);
-    console.log(coach.birthDate);
-    this.coachService.saveCoach(coach)
-      .subscribe( data => {
-        alert("User created successfully.");
+  saveCoach(newCoach: Coach){
+    this.coach1 = new Coach(newCoach.lastName, newCoach.firstName, newCoach.middleName, newCoach.birthDate);
+    this.coachService.saveCoach(this.coach1)
+      .subscribe( coach =>  {
+        alert("Coach "+ this.coach1.lastName + " created successfully.");
       });
-    console.log(coach.lastName);
   }
 
 

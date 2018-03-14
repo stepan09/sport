@@ -6,7 +6,6 @@ import 'rxjs/add/operator/catch';
 import {Http, Response} from "@angular/http";
 
 
-
 @Injectable()
 export class CoachService {
 
@@ -23,17 +22,18 @@ export class CoachService {
 
 
   public saveCoach(coach: Coach) {
-    console.log(coach.lastName);
-    return this.http.post(this.apiUrl, coach);
+    return this.http.post(this.apiUrl, coach)
+      .map(res=>res.json());
   }
 
   deleteUserById(coach: Coach) {
     console.log(coach.coachId);
-    return this.http.delete(this.apiUrl + "/del/" + coach.coachId);
+    return this.http.delete(this.apiUrl + coach.coachId);
       }
 
-  updateUser(coach: Coach): Observable<Coach> {
-    return null;
+  updateUser(coach: Coach) {
+    return this.http.put(this.apiUrl, coach)
+      .map(res=>res.json());
   }
 
 

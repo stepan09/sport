@@ -44,7 +44,7 @@ export class CoachListComponent implements OnInit {
     this.coachService.deleteUserById(coach)
       .subscribe(data => {
         this.coaches = this.coaches.filter(c => c !== coach);
-      })
+      });
     console.log('Delete Coach');
   }
 

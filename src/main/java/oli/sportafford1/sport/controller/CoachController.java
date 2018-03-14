@@ -54,7 +54,7 @@ public class CoachController {
         return updateCoach;
     }
 
-    @DeleteMapping("/coaches/del/{id}")
+    @DeleteMapping("/coaches/{id}")
     public ResponseEntity<?> deleteCoach(@PathVariable(value = "id") Long coachId) {
         Coach coach = coachRepository.findById(coachId)
                 .orElseThrow(() -> new ResourceNotFoundException("Coach", "id", coachId));

@@ -19,7 +19,7 @@ import java.util.List;
 public class Coach implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "coach_id")
     private Long coachId;
 
@@ -39,8 +39,8 @@ public class Coach implements Serializable {
     @CreatedDate
     private Date birthDate;
 
-    @ManyToMany(mappedBy = "coaches")
-    private List<Sportsman> sportsmen;
+    /*@ManyToMany(mappedBy = "coaches")
+    private List<Sportsman> sportsmen;*/
 
     public Coach() {
     }
@@ -50,7 +50,9 @@ public class Coach implements Serializable {
         this.firstName = firstName;
         this.middleName = middleName;
         this.birthDate = birthDate;
+/*
         this.sportsmen = sportsmen;
+*/
     }
 
     public Long getCoachId() {
@@ -93,11 +95,11 @@ public class Coach implements Serializable {
         this.birthDate = birthDate;
     }
 
-    public List<Sportsman> getSportsmen() {
+    /*public List<Sportsman> getSportsmen() {
         return sportsmen;
     }
 
     public void setSportsmen(List<Sportsman> sportsmen) {
         this.sportsmen = sportsmen;
-    }
+    }*/
 }
