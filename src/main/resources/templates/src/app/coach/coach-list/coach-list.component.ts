@@ -13,8 +13,7 @@ export class CoachListComponent implements OnInit {
 
   private coaches: Coach[];
 
-  constructor(private router: Router,
-              private coachService: CoachService) { }
+  constructor(private router: Router, private coachService: CoachService) { }
 
   ngOnInit() {
     this.getAllCoaches();

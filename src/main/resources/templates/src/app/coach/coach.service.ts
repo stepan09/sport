@@ -3,21 +3,21 @@ import {Observable} from "rxjs/Observable";
 import {Coach} from "./coach";
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/catch';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Http, Response} from "@angular/http";
 
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+
 @Injectable()
 export class CoachService {
 
   private apiUrl = 'http://localhost:8080/api/coaches';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: Http) { }
 
   findAll() {
-    return this.http.get(this.apiUrl);
+    return this.http.get(this.apiUrl)
+      .map((res:Response) => res.json())
+      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
 
